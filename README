@@ -1,0 +1,42 @@
+Continuous Deployment in 3 hours
+================================
+
+This is the accompanying material for the workshop Continuous Deployment in
+3 hours by Mike van Riel.
+
+Requirements
+------------
+
+To be able to follow this workshop you will need to have the following software packages installed:
+
+* [git](http://git-scm.com)
+* [Vagrant](http://www.vagrantup.com)
+* [Virtualbox](http://www.virtualbox.com)
+
+Setting up your environment
+---------------------------
+
+1. clone this repository:
+
+      git clone [x]
+
+2. Setup and install submodules:
+
+      git submodule update --init --recursive
+
+3. Setup the development environment using Vagrant
+
+  1. When using a base-box provided at the workshop:
+
+    1. copy the base-box to location x
+    2. Change the Vagrantfile's config.vm.box and config.vm.box_url entry to match the location of your base-box
+
+  2. Run `vagrant up`
+
+4. Add the following line to your hosts file:
+
+    192.168.42.42 dev.my.blog.com
+
+5. Profit $$$ !
+
+After the above you can go to http://dev.www.blog.com/index.php/blog/ to see the result of your work.
