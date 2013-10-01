@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <project default="stage:commit">
-  <target name="stage:commit" depends="build:clean">
+  <target name="stage:commit" depends="build:clean, test:unit">
   </target>
 
   <target name="build:clean">
     <delete dir="${project.basedir}/build/" />
     <mkdir dir="${project.basedir}/build" />
+  </target>
+
+  <target name="test:unit">
+    <exec executable="phpunit" dir="${project.basedir}" checkreturn="true" passthru="true">
+      <arg line="--coverage-text app/tests/" />
+    </exec>
   </target>
 </project>
