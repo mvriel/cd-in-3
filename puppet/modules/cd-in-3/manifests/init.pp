@@ -23,7 +23,7 @@ class cd-in-3 {
         creates => "/home/vagrant/jenkins-cli.jar"
     }
     exec{'jenkins-plugins-install' :
-        command => "java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin checkstyle cloverphp dry htmlpublisher jdepend plot pmd violations xunit",
+        command => "java -jar jenkins-cli.jar -s http://localhost:8080 install-plugin checkstyle cloverphp dry htmlpublisher jdepend plot pmd violations xunit git clone-workspace-scm build-pipeline-plugin",
         require => Exec['download-jenkins-cli'],
     }
     exec{'jenkins-restart' :
