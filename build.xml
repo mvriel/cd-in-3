@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<project default="build">
-  <target name="stage:commit">
+<project default="stage:commit">
+  <target name="stage:commit" depends="build:clean">
+  </target>
+
+  <target name="build:clean">
+    <delete dir="${project.basedir}/build/" />
+    <mkdir dir="${project.basedir}/build" />
   </target>
 </project>
