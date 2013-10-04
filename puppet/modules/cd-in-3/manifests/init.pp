@@ -18,7 +18,7 @@ class cd-in-3 {
         require => File["dotdeb.list"]
     }
     exec{'download-jenkins-cli' :
-        command => "wget http://localhost:8080/jnlpJars/jenkins-cli.jar",
+        command => "wget -N http://localhost:8080/jnlpJars/jenkins-cli.jar",
         require => Package["jenkins"],
         creates => "/home/vagrant/jenkins-cli.jar"
     }
