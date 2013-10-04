@@ -3,7 +3,7 @@
 
 Vagrant::Config.run do |config|
     config.vm.host_name = "dev.my.blog.com"
-    config.vm.network :hostonly, "192.168.42.42"
+    config.vm.network :hostonly, "192.168.43.42"
     config.vm.forward_port 80, 8080
 
 #    config.vm.box     = "precise64"

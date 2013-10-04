@@ -58,8 +58,17 @@ class cd-in-3::httpd {
         docroot       => '/var/www/blog',
         server_name   => 'dev.my.blog.com'
     }
+    file { '/var/www' :
+        ensure => 'directory',
+        owner => 'vagrant'
+    }
     file { '/var/www/blog' :
         ensure => 'link',
-        target => '/vagrant/app/web'
+        target => '/vagrant/app/web',
+        owner => 'vagrant'
+    }
+    file { ['/opt/sites', '/opt/sites/blog'] :
+      ensure => 'directory',
+      owner  => 'vagrant'
     }
 }

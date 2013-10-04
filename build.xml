@@ -14,4 +14,17 @@
       <arg line="--coverage-text app/tests/" />
     </exec>
   </target>
+
+  <target name="deploy">
+      <tstamp><format property="TIMESTAMP" pattern="%s"/></tstamp>
+      <exec executable="ssh" checkreturn="true" passthru="true">
+          <arg line="vagrant@localhost 'mkdir /opt/sites/blog/${TIMESTAMP}'" />
+      </exec>
+      <exec executable="scp" dir="${project.basedir}" checkreturn="true" passthru="true">
+          <arg line="-r app/* vagrant@localhost:/opt/sites/blog/${TIMESTAMP}" />
+      </exec>
+      <exec executable="ssh" checkreturn="true" passthru="true">
+          <arg line="vagrant@localhost 'cd /opt/sites/blog; ln -s /opt/sites/blog/${TIMESTAMP}/web new_link; mv -Tf new_link /var/www/blog; chmod -R 777 /opt/sites/blog/${TIMESTAMP}/cache'" />
+      </exec>
+  </target>
 </project>
