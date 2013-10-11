@@ -35,7 +35,7 @@ Setting up your environment
 
 4. Add the following line to your hosts file:
 
-    192.168.42.42 dev.my.blog.com
+    192.168.43.42 dev.www.blog.com
 
 5. Profit $$$ !
 
