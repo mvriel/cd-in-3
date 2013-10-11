@@ -65,7 +65,8 @@ class cd-in-3::httpd {
     file { '/var/www/blog' :
         ensure => 'link',
         target => '/vagrant/app/web',
-        owner => 'vagrant'
+        owner => 'vagrant',
+        replace => "no"
     }
     file { ['/opt/sites', '/opt/sites/blog'] :
       ensure => 'directory',

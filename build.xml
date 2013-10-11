@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <project default="stage:commit">
+  <property name="deploy.host" value="localhost" />
+
   <target name="stage:commit" depends="build:clean, test:unit">
   </target>
 
@@ -18,13 +20,13 @@
   <target name="deploy">
       <tstamp><format property="TIMESTAMP" pattern="%s"/></tstamp>
       <exec executable="ssh" checkreturn="true" passthru="true">
-          <arg line="vagrant@localhost 'mkdir /opt/sites/blog/${TIMESTAMP}'" />
+          <arg line="vagrant@${deploy.host} 'mkdir /opt/sites/blog/${TIMESTAMP}'" />
       </exec>
       <exec executable="scp" dir="${project.basedir}" checkreturn="true" passthru="true">
-          <arg line="-r app/* vagrant@localhost:/opt/sites/blog/${TIMESTAMP}" />
+          <arg line="-r app/* vagrant@${deploy.host}:/opt/sites/blog/${TIMESTAMP}" />
       </exec>
       <exec executable="ssh" checkreturn="true" passthru="true">
-          <arg line="vagrant@localhost 'cd /opt/sites/blog; ln -s /opt/sites/blog/${TIMESTAMP}/web new_link; mv -Tf new_link /var/www/blog; chmod -R 777 /opt/sites/blog/${TIMESTAMP}/cache'" />
+          <arg line="vagrant@${deploy.host} 'cd /opt/sites/blog; ln -s /opt/sites/blog/${TIMESTAMP}/web new_link; mv -Tf new_link /var/www/blog; chmod -R 777 /opt/sites/blog/${TIMESTAMP}/cache'" />
       </exec>
   </target>
 </project>
