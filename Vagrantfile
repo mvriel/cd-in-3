@@ -6,10 +6,10 @@ Vagrant::Config.run do |config|
     config.vm.network :hostonly, "192.168.43.42"
     config.vm.forward_port 80, 8080
 
-#    config.vm.box     = "precise64"
-#    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-    config.vm.box     = "cd-in-3"
-    config.vm.box_url = "package.box"
+    config.vm.box     = "precise64"
+    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+#    config.vm.box     = "cd-in-3"
+#    config.vm.box_url = "package.box"
 
     config.vm.customize [
         'modifyvm', :id, '--chipset', 'ich9', # solves kernel panic issue on some host machines
